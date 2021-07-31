@@ -37,7 +37,7 @@ export function Experience() {
       <Flex align="flex-start" mt="4" direction={["column", "row"]}>
         <Stack direction={["row-reverse", "column"]} align="center" >
           {DATA.map((item, index) => (
-            <TabButton isActive={index === tab} onClick={() => setTab(index)}>
+            <TabButton key={index} isActive={index === tab} onClick={() => setTab(index)}>
               {item.company}
             </TabButton>
           ))}
@@ -45,7 +45,7 @@ export function Experience() {
         {DATA.map((item, index) => {
           if (tab === index) {
             return (
-              <SlideFade delay={0.2} offsetY="-40px" in={tab === index} >
+              <SlideFade key={index} delay={0.2} offsetY="-40px" in={tab === index} >
                 <Tab title={item.title} subtitle={item.subtitle}>
                   <List spacing="3" mt="4">
                     <ListItem>
