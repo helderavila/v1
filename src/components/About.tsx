@@ -7,8 +7,9 @@ export function About() {
       width="100%"
       maxWidth={800}
       direction="column"
+      mt="8"
     >
-      <Text color="gray.600" fontSize="xl" mt="8">SOBRE MIM</Text>
+      <Text color="gray.600" fontSize="xl">SOBRE MIM</Text>
       <Text fontSize="lg" mt="4">
         Meu nome é Helder e gosto de criar coisas para internet. Meu interesse em desenvolvimento começou em 2011,
         quando queria descobrir como os sites/blogs eram feitos. Atualmente estou trabalhando como Desenvolvedor Front-end na <Text as="span" color="purple.500">Codeby </Text>
