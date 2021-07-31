@@ -1,5 +1,10 @@
+import { Heading, Text } from "@chakra-ui/react";
+
 export default function Home() {
   return (
-    <h1>Olá</h1>
+    <div>
+      <Heading>Olá</Heading>
+      <Text>Mundo</Text>
+    </div>
   )
 }
