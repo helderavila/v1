@@ -22,7 +22,7 @@ export function Card({ name, description, url, tags }: CardProps) {
     >
       <Flex justifyContent="space-between">
         <Heading size="lg">{name}</Heading>
-        <a target="_blank" href={url}>
+        <a target="_blank" href={url} rel="noreferrer">
           <IconButton
             aria-label="Open noxus"
             bg="transparent"
