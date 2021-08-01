@@ -2,7 +2,15 @@ import { Box, Flex, Heading, Icon, IconButton, HStack, Tag, Text } from "@chakra
 
 import { RiExternalLinkLine } from 'react-icons/ri'
 
-export function Card() {
+interface CardProps {
+  name: string;
+  description: string;
+  url: string;
+  tags: string[];
+}
+
+export function Card({ name, description, url, tags }: CardProps) {
+
   return (
     <Box
       bg="gray.700"
@@ -13,23 +21,26 @@ export function Card() {
       justifyContent="space-around"
     >
       <Flex justifyContent="space-between">
-        <Heading size="lg">Noxus</Heading>
-        <IconButton
-          aria-label="Open noxus"
-          bg="transparent"
-          _hover={{
-            bg: 'transparent',
-            color: 'purple.500'
-          }}
-          icon={<Icon as={RiExternalLinkLine} fontSize="32" />}
-        />
+        <Heading size="lg">{name}</Heading>
+        <a target="_blank" href={url}>
+          <IconButton
+            aria-label="Open noxus"
+            bg="transparent"
+            _hover={{
+              bg: 'transparent',
+              color: 'purple.500'
+            }}
+            icon={<Icon as={RiExternalLinkLine} fontSize="32" />}
+          />
+        </a>
       </Flex>
       <Text>
-        Noxus é um aplicativo que estou desenvolvendo voltado para o público gamer com o objetivo de conectar jogadores.
+        {description}
       </Text>
       <HStack>
-        <Tag variant="outline" colorScheme="purple">ReactJS</Tag>
-        <Tag variant="outline" colorScheme="purple">NodeJS</Tag>
+        {tags.map(tag => (
+          <Tag key={tag} variant="outline" colorScheme="purple" textTransform="uppercase">{tag}</Tag>
+        ))}
       </HStack>
     </Box>
   )
