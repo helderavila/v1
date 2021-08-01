@@ -36,8 +36,8 @@ export function Experience({ experiences }: ExperienceProps) {
               <SlideFade key={index} delay={0.2} offsetY="-40px" in={tab === index} >
                 <Tab title={item.occupation} subtitle={item.date}>
                   <List spacing="3" mt="4">
-                    {item.responsibilities.map(responsability => (
-                      <ListItem>
+                    {item.responsibilities.map((responsability, index) => (
+                      <ListItem key={index}>
                         <ListIcon as={IoIosSquare} color="purple.500" />
                         {responsability}
                       </ListItem>
