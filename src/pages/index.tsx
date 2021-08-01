@@ -1,21 +1,20 @@
 import { Flex } from "@chakra-ui/react";
-import Prismic from '@prismicio/client'
 
 import { About } from "../components/About";
 import { Experience } from "../components/Experience";
 import { Header } from "../components/Header";
 import { Projects } from "../components/Projects";
-import { getPrismicClient } from "../services/prismic";
 
-import { RichText } from 'prismic-dom'
-
-import { Project } from "../@types/project";
+import { ProjectData } from "../@types/project";
+import { ExperienceData } from "../@types/experience";
+import { getExperiences, getProjects } from "../api/prismic";
 
 interface HomeProps {
-  projects: Project[]
+  projects: ProjectData[]
+  experiences: ExperienceData[]
 }
 
-export default function Home({ projects }: HomeProps) {
+export default function Home({ projects, experiences }: HomeProps) {
   return (
     <Flex
       w="100%"
@@ -27,35 +26,20 @@ export default function Home({ projects }: HomeProps) {
     >
       <Header />
       <About />
-      <Experience />
+      <Experience experiences={experiences} />
       <Projects projects={projects} />
     </Flex>
   )
 }
 
 export async function getStaticProps() {
-  const prismic = getPrismicClient()
-
-  const response = await prismic.query(
-    [Prismic.predicates.at('document.type', 'project')],
-    {
-      fetch: ['project.name', 'project.description', 'project.url'],
-      pageSize: 4
-    }
-  )
-
-  const projects = response.results.map(project => {
-    return {
-      name: RichText.asText(project.data.name),
-      description: RichText.asText(project.data.description),
-      url: RichText.asText(project.data.url),
-      tags: project.tags
-    }
-  })
+  const projects = await getProjects()
+  const experiences = await getExperiences()
 
   return {
     props: {
-      projects
+      projects,
+      experiences
     }
   }
 }

@@ -1,9 +1,9 @@
 import { Flex, SimpleGrid, Text } from "@chakra-ui/react";
-import { Project } from "../../@types/project";
+import { ProjectData } from "../../@types/project";
 import { Card } from "./Card";
 
 interface ProjectsProps {
-  projects: Project[]
+  projects: ProjectData[]
 }
 
 export function Projects({ projects }: ProjectsProps) {
