@@ -38,6 +38,7 @@ export async function getExperiences() {
         "experience.responsibilities",
       ],
       pageSize: 100,
+      orderings: "[document.first_publication_date desc]",
     }
   );
   const experiences = experienceResponse.results.map((experience) => {

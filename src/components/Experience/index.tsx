@@ -13,7 +13,6 @@ interface ExperienceProps {
 
 export function Experience({ experiences }: ExperienceProps) {
   const [tab, setTab] = useState(0)
-
   return (
     <Flex
       width="100%"
